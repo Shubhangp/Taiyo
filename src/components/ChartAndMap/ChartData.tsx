@@ -25,14 +25,14 @@ const ChartData = () => {
 
     
     for (const key in data.cases) {
-        if (data.cases.hasOwnProperty(key)) {
-            const entry: DataEntry = {
-                keys: key,
-                cases: data.cases[key],
-                deaths: data.deaths[key],
-                recovered: data.recovered[key],
-            };
-            convertedData.push(entry);
+        if (key in data.cases) {
+          const entry: DataEntry = {
+            keys: key,
+            cases: data.cases[key],
+            deaths: data.deaths[key],
+            recovered: data.recovered[key],
+          };
+          convertedData.push(entry);
         }
     }
 

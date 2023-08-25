@@ -11,6 +11,17 @@ interface CountryData {
     deaths: number;
 }
 
+interface CountryInfo {
+    countryInfo: {
+        lat: number;
+        long: number;
+    };
+    country: string;
+    active: number;
+    recovered: number;
+    deaths: number;
+}
+
 const CountryData = () => {
 
     // Fetcher function
@@ -27,13 +38,14 @@ const CountryData = () => {
     console.log(data);
     
 
-    const convertedData: CountryData[] = data.map((countryWise) => ({
+    const convertedData: CountryData[] = data.map((countryWise: CountryInfo) => ({
         geoCode: [countryWise.countryInfo.lat, countryWise.countryInfo.long],
         country: countryWise.country,
         active: countryWise.active,
         recovered: countryWise.recovered,
         deaths: countryWise.deaths,
-    }));
+      })
+    );
 
     console.log(convertedData);
 

@@ -12,6 +12,11 @@ interface FormModel {
   status: string;
 }
 
+interface ContactEditProps {
+  editClick: number | undefined;
+  setEditClick: React.Dispatch<React.SetStateAction<number | undefined>>;
+}
+
 const ValidateForm = Yup.object().shape({
   firstname: Yup.string()
     .required("*Name is required")
@@ -33,7 +38,7 @@ const ValidateForm = Yup.object().shape({
   status: Yup.string().required("*Please check status"),
 });
 
-const ContactEdit = ({editClick, setEditClick}) => {
+const ContactEdit: React.FC<ContactEditProps>= ({editClick,setEditClick}) => {
   const contactList = useSelector((state: RootState) => state.contact.contact);
 
   const dispatch = useDispatch();
@@ -48,16 +53,18 @@ const ContactEdit = ({editClick, setEditClick}) => {
         </h3>
         <Formik<FormModel>
           initialValues={{
-            firstname: editContact.firstname,
-            lastname: editContact.lastname,
-            phone: editContact.phone,
-            email: editContact.email,
-            status: editContact.status,
+            firstname: editContact?.firstname || "",
+            lastname: editContact?.lastname || "",
+            phone: editContact?.phone || "",
+            email: editContact?.email || "",
+            status: editContact?.status || "",
           }}
           validationSchema={ValidateForm}
           onSubmit={(values) => {
-            dispatch(editContacts({id: editClick ,...values}));
-            setEditClick(undefined);
+            if (editClick !== undefined) {
+              dispatch(editContacts({ id: editClick, ...values }));
+              setEditClick(undefined);
+            }
           }}
         >
           {({
@@ -152,7 +159,9 @@ const ContactEdit = ({editClick, setEditClick}) => {
                     />
                     <span className="ml-2">Inactive</span>
                   </label>
-                  {errors.status && touched.status && <div>{errors.status}</div>}
+                  {errors.status && touched.status && (
+                    <div>{errors.status}</div>
+                  )}
                 </div>
               </div>
               <div className="w-full text-center mt-6">

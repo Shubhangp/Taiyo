@@ -8,7 +8,7 @@ import ShowContact from "./ShowContact";
 
 const Contact = () => {
     
-    const [newContact, setNewContact] = useState(false);
+    const [newContact, setNewContact] = useState<boolean>(false);
     const [editClick, setEditClick] = useState<number | undefined>(undefined);
     console.log(editClick);
 
