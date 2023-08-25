@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import { QueryClientProvider, QueryClient } from "react-query";
-import appStore from "./redux_utilis/appStore";
+import { appStore } from "./redux_utilis/appStore";
 import SideBar from "./components/SideBar/SideBar";
 
 const queryClient = new QueryClient()

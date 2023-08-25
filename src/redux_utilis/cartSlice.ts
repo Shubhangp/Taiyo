@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Contacts {
   id: number;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
   email: string;
   status: string;
 }
@@ -18,7 +18,7 @@ const initialState: ContactState = {
 };
 
 const contactSlice = createSlice({
-  name: 'contact',
+  name: 'contacts',
   initialState,
   reducers: {
     addContacts: (state, action: PayloadAction<Contacts>) => {
