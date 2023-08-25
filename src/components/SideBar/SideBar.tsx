@@ -8,7 +8,7 @@ const SideBar = () => {
 
     return(
         <div>
-            <aside className={clicked? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+            <aside className={clicked? "fixed top-0 left-0 z-50 w-64 h-screen transition-transform translate-x-0"
                               :"fixed top-0 left-0 md:block hidden z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"}
             >
                 <div className="h-full overflow-y-auto bg-gray-50 pb-4">

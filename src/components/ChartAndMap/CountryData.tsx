@@ -39,7 +39,7 @@ const CountryData = () => {
 
     return(
         <div className="flex justify-center bg-gray-50 rounded-md mx-3 my-6">
-            <MapContainer center={data.geoCode} zoom={3}>
+            <MapContainer center={[20, 77]} zoom={3}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
